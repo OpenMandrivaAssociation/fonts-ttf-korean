@@ -1,5 +1,5 @@
 %define version	2.1
-%define release %mkrel 7
+%define release %mkrel 8
 
 %if %mdkversion < 20070
 %define fccachefile fonts.cache-1
@@ -23,8 +23,6 @@ BuildRoot:	%{_tmppath}/%name-%version-%release-root
 BuildRequires:	freetype-tools
 Obsoletes: 	baekmuk hwan-fonts
 Provides:	baekmuk hwan-fonts
-Requires(post): chkfontpath
-Requires(postun): chkfontpath
 Requires(post): fontconfig
 Requires(postun): fontconfig
 
@@ -54,15 +52,17 @@ touch %fccachefile
 %endif
 ) 
 
+mkdir -p %{buildroot}%_sysconfdir/X11/fontpath.d/
+ln -s ../../..%_datadir/fonts/TTF/korean \
+    %{buildroot}%_sysconfdir/X11/fontpath.d/ttf-korean:pri=50
+
+
 %post
-[ -x %{_sbindir}/chkfontpath ] && %{_sbindir}/chkfontpath -q -a %{_datadir}/fonts/TTF/korean
-touch %{_datadir}/fonts/TTF
 [ -x %{_bindir}/fc-cache ] && %{_bindir}/fc-cache 
 
 
 %postun
 if [ "$1" = "0" ]; then
-  %{_sbindir}/chkfontpath -q -r %{_datadir}/fonts/TTF/korean
   [ -x %{_bindir}/fc-cache ] && %{_bindir}/fc-cache 
 fi
 
@@ -72,7 +72,6 @@ rm -fr %buildroot
 %files
 %defattr(-,root,root,0755)
 %doc COPYRIGHT*
-%dir %{_datadir}/fonts/TTF/
 %dir %{_datadir}/fonts/TTF/korean/
 %{_datadir}/fonts/TTF/korean/*.ttf
 %config(noreplace) %{_datadir}/fonts/TTF/korean/fonts.alias
@@ -81,6 +80,5 @@ rm -fr %buildroot
 %if %mdkversion < 20070
 %ghost %{_datadir}/fonts/TTF/korean/%fccachefile
 %endif
-
-
+%{_sysconfdir}/X11/fontpath.d/ttf-korean:pri=50
 
