@@ -19,7 +19,6 @@ Source4:	cidunin.korean
 License:	GPL
 Group:		System/Fonts/True type
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%name-%version-%release-root
 BuildRequires:	freetype-tools
 Obsoletes: 	baekmuk hwan-fonts
 Provides:	baekmuk hwan-fonts
