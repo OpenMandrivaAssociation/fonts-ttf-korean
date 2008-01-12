@@ -1,5 +1,5 @@
 %define version	2.1
-%define release %mkrel 8
+%define release %mkrel 9
 
 %if %mdkversion < 20070
 %define fccachefile fonts.cache-1
