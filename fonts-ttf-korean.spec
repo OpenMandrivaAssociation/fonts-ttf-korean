@@ -8,9 +8,6 @@ Version:	1.0.2
 Release:	%mkrel -c %snapdate %rel
 URL:		http://kldp.net/projects/unfonts/
 Source0:	http://kldp.net/frs/download.php/4695/un-fonts-core-%version-%snapdate.tar.gz
-Source2:	%name-fonts.alias.bz2
-Source3:	cidinst.korean
-Source4:	cidunin.korean
 License:	GPLv2
 Group:		System/Fonts/True type
 BuildArch:	noarch
@@ -42,10 +39,6 @@ install -m 0644 *.ttf %buildroot/%{_datadir}/fonts/TTF/korean
 cd %buildroot/%{_datadir}/fonts/TTF/korean
 ttmkfdir -u > fonts.dir
 ln -s fonts.dir fonts.scale
-bzcat %SOURCE2 > fonts.alias
-%if %mdkversion < 20070
-touch %fccachefile
-%endif
 ) 
 
 mkdir -p %{buildroot}%_sysconfdir/X11/fontpath.d/
@@ -67,14 +60,9 @@ rm -fr %buildroot
 
 %files
 %defattr(-,root,root,0755)
-%doc COPYRIGHT*
+%doc README COPYING
 %dir %{_datadir}/fonts/TTF/korean/
 %{_datadir}/fonts/TTF/korean/*.ttf
-%config(noreplace) %{_datadir}/fonts/TTF/korean/fonts.alias
 %config(noreplace) %{_datadir}/fonts/TTF/korean/fonts.dir
 %{_datadir}/fonts/TTF/korean/fonts.scale
-%if %mdkversion < 20070
-%ghost %{_datadir}/fonts/TTF/korean/%fccachefile
-%endif
 %{_sysconfdir}/X11/fontpath.d/ttf-korean:pri=50
-
