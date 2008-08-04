@@ -1,22 +1,17 @@
-%define version	2.1
-%define release %mkrel 10
+%define snapdate 080608
+%define rel 1
 
-%if %mdkversion < 20070
-%define fccachefile fonts.cache-1
-%endif
-
-Summary:	Baekmuk korean fonts
+Summary:	Un Fonts in Koream
 Name:		fonts-ttf-korean
-Version:	%{version}
-Release:	%{release}
-
-Source0:	ftp://ftp.mizi.com/pub/baekmuk/baekmuk-ttf-%{version}.tar.bz2
-Source1:	ftp://ftp.mizi.com/pub/baekmuk/baekmuk-doc-%{version}.tar.bz2
+Epoch:		1
+Version:	1.0.2
+Release:	%mkrel -c %snapdate %rel
+URL:		http://kldp.net/projects/unfonts/
+Source0:	http://kldp.net/frs/download.php/4695/un-fonts-core-%version-%snapdate.tar.gz
 Source2:	%name-fonts.alias.bz2
 Source3:	cidinst.korean
 Source4:	cidunin.korean
-
-License:	GPL
+License:	GPLv2
 Group:		System/Fonts/True type
 BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%name-%version-%release-root
@@ -27,11 +22,12 @@ Requires(post): fontconfig
 Requires(postun): fontconfig
 
 %description
-Baekmuk Korean TTF Fonts.
+Un-fonts is comes from the HLaTeX as type1 fonts in 1998 by Koaunghi Un,
+he made type1 fonts to use with Korean TeX(HLaTeX [1]) in the late 1990's and
+release it under the GNU GPL license.
 
 %prep
-
-%setup -q -T -c -a0 -a1
+%setup -q -n un-fonts
  
 %build
 
