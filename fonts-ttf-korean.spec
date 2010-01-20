@@ -1,5 +1,5 @@
 %define snapdate 080608
-%define rel 1
+%define rel 2
 
 Summary:	Un Fonts in Koream
 Name:		fonts-ttf-korean
@@ -15,8 +15,6 @@ BuildRoot:	%{_tmppath}/%name-%version-%release-root
 BuildRequires:	freetype-tools
 Obsoletes: 	baekmuk hwan-fonts
 Provides:	baekmuk hwan-fonts
-Requires(post): fontconfig
-Requires(postun): fontconfig
 
 %description
 Un-fonts is comes from the HLaTeX as type1 fonts in 1998 by Koaunghi Un,
@@ -45,15 +43,6 @@ mkdir -p %{buildroot}%_sysconfdir/X11/fontpath.d/
 ln -s ../../..%_datadir/fonts/TTF/korean \
     %{buildroot}%_sysconfdir/X11/fontpath.d/ttf-korean:pri=50
 
-
-%post
-[ -x %{_bindir}/fc-cache ] && %{_bindir}/fc-cache 
-
-
-%postun
-if [ "$1" = "0" ]; then
-  [ -x %{_bindir}/fc-cache ] && %{_bindir}/fc-cache 
-fi
 
 %clean
 rm -fr %buildroot
