@@ -12,7 +12,7 @@ License:	GPLv2
 Group:		System/Fonts/True type
 BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%name-%version-%release-root
-BuildRequires:	freetype-tools
+BuildRequires:	mkfontdir
 Obsoletes: 	baekmuk hwan-fonts
 Provides:	baekmuk hwan-fonts
 
@@ -35,8 +35,8 @@ install -m 0644 *.ttf %buildroot/%{_datadir}/fonts/TTF/korean
 
 (
 cd %buildroot/%{_datadir}/fonts/TTF/korean
-ttmkfdir -u > fonts.dir
-ln -s fonts.dir fonts.scale
+mkfontdir > fonts.dir
+ln -sf fonts.dir fonts.scale
 ) 
 
 mkdir -p %{buildroot}%_sysconfdir/X11/fontpath.d/
