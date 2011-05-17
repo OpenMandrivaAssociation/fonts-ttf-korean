@@ -11,6 +11,7 @@ Source0:	http://kldp.net/frs/download.php/4695/un-fonts-core-%version-%snapdate.
 License:	GPLv2
 Group:		System/Fonts/True type
 BuildArch:	noarch
+BuildRequires: fontconfig
 BuildRoot:	%{_tmppath}/%name-%version-%release-root
 BuildRequires:	mkfontdir
 Obsoletes: 	baekmuk hwan-fonts
