@@ -1,5 +1,5 @@
 %define snapdate 080608
-%define rel 4
+%define rel 5
 
 Summary:	Un Fonts in Koream
 Name:		fonts-ttf-korean
