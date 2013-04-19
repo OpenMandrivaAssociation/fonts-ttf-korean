@@ -7,8 +7,8 @@ Version:	1.0.2
 Release:	0.%{snapdate}.9
 License:	GPLv2
 Group:		System/Fonts/True type
-URL:		http://kldp.net/projects/unfonts/
-Source0:	http://kldp.net/frs/download.php/4695/un-fonts-core-%version-%snapdate.tar.gz
+Url:		http://kldp.net/projects/unfonts/
+Source0:	http://kldp.net/frs/download.php/4695/un-fonts-core-%version-%{snapdate}.tar.gz
 BuildArch:	noarch
 BuildRequires:	fontconfig
 BuildRequires:	mkfontdir
@@ -21,14 +21,13 @@ he made type1 fonts to use with Korean TeX(HLaTeX [1]) in the late 1990's and
 release it under the GNU GPL license.
 
 %prep
-%setup -q -n un-fonts
+%setup -qn un-fonts
 
 %build
 
 %install
 install -d %{buildroot}%{_datadir}/fonts/TTF/korean/
 install -m 0644 *.ttf %{buildroot}%{_datadir}/fonts/TTF/korean
-
 
 (
 cd %{buildroot}%{_datadir}/fonts/TTF/korean
@@ -41,12 +40,10 @@ ln -s ../../..%{_datadir}/fonts/TTF/korean \
     %{buildroot}%{_sysconfdir}/X11/fontpath.d/ttf-korean:pri=50
 
 %files
-%defattr(-,root,root,0755)
 %doc README COPYING
 %dir %{_datadir}/fonts/TTF/korean/
 %{_datadir}/fonts/TTF/korean/*.ttf
 %config(noreplace) %{_datadir}/fonts/TTF/korean/fonts.dir
 %{_datadir}/fonts/TTF/korean/fonts.scale
 %{_sysconfdir}/X11/fontpath.d/ttf-korean:pri=50
-
 
