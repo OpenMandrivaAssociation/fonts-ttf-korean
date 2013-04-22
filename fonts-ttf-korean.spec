@@ -4,7 +4,7 @@ Summary:	Un Fonts in Koream
 Name:		fonts-ttf-korean
 Epoch:		1
 Version:	1.0.2
-Release:	0.%{snapdate}.9
+Release:	0.%{snapdate}.10
 License:	GPLv2
 Group:		System/Fonts/True type
 Url:		http://kldp.net/projects/unfonts/
