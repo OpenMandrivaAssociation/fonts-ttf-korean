@@ -7,7 +7,7 @@ Version:	1.0.2
 Release:	0.%{snapdate}.10
 License:	GPLv2
 Group:		System/Fonts/True type
-Url:		http://kldp.net/projects/unfonts/
+Url:		https://kldp.net/projects/unfonts/
 Source0:	http://kldp.net/frs/download.php/4695/un-fonts-core-%version-%{snapdate}.tar.gz
 BuildArch:	noarch
 BuildRequires:	fontconfig
